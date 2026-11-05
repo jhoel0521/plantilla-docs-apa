@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantilla APA 7</title>
+<meta name="description" content="Plantilla gratuita para escribir tu tesis o informe en formato APA 7: importa tu Word o escribe en Markdown y genera el .docx. Funciona en Windows, macOS y Linux.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4e79'/%3E%3Cpath d='M9 7h10l5 5v13H9z' fill='%23fff'/%3E%3Cpath d='M12 16h8M12 20h8' stroke='%231f4e79' stroke-width='2'/%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #fbfaf7; --surface: #ffffff; --text: #1d2430; --muted: #5a6475; --line: #dcd8cf;
+  --accent: #1f4e79; --accent-text: #ffffff; --soft: #eaf1f8; --warn-bg: #fff4d6; --warn-line: #e0b34a;
+  --code-bg: #f1efe9; --ok: #1d6b3a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171c; --surface: #1c2027; --text: #e8eaee; --muted: #a2abba; --line: #323844;
+    --accent: #7db3e6; --accent-text: #0e1b29; --soft: #1b2733; --warn-bg: #3a3017; --warn-line: #8a6d1d;
+    --code-bg: #12151a; --ok: #6bcf8e;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14171c; --surface: #1c2027; --text: #e8eaee; --muted: #a2abba; --line: #323844;
+  --accent: #7db3e6; --accent-text: #0e1b29; --soft: #1b2733; --warn-bg: #3a3017; --warn-line: #8a6d1d;
+  --code-bg: #12151a; --ok: #6bcf8e;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text); line-height: 1.6;
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+header.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+.brand { font-weight: 700; color: var(--text); text-decoration: none; }
+nav a { color: var(--muted); text-decoration: none; margin-left: 16px; font-size: 15px; }
+nav a:hover, nav a:focus-visible { color: var(--accent); text-decoration: underline; }
+.hero { padding: 48px 0 32px; }
+h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; }
+.lead { font-size: 19px; color: var(--muted); max-width: 640px; margin: 0 0 24px; }
+.btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 12px 20px; border-radius: 8px; border: 1px solid var(--accent);
+  background: var(--accent); color: var(--accent-text); font-weight: 600; text-decoration: none; cursor: pointer; font-size: 16px;
+}
+.btn.sec { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+.chip { font-size: 14px; padding: 4px 12px; border-radius: 999px; background: var(--soft); color: var(--accent); }
+section { padding: 32px 0; border-top: 1px solid var(--line); }
+h2 { font-size: 26px; margin: 0 0 16px; }
+h3 { font-size: 19px; margin: 0 0 6px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.card p { margin: 0 0 8px; color: var(--muted); }
+.card a { color: var(--accent); font-weight: 600; }
+ol.steps { padding-left: 0; list-style: none; counter-reset: s; display: grid; gap: 14px; margin: 0; }
+ol.steps li { counter-increment: s; position: relative; padding-left: 52px; }
+ol.steps li::before {
+  content: counter(s); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-text); display: grid; place-items: center; font-weight: 700;
+}
+ol.steps strong { display: block; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.tab {
+  padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface);
+  color: var(--text); cursor: pointer; font-size: 15px;
+}
+.tab[aria-selected="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+.panel[hidden] { display: none; }
+pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+pre {
+  background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px; padding: 14px; margin: 8px 0 12px;
+  overflow-x: auto; font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word;
+}
+code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; font-size: 0.92em; }
+pre code { background: none; padding: 0; }
+.prompt { max-height: 320px; overflow: auto; }
+.row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.status { color: var(--ok); font-weight: 600; font-size: 15px; }
+.notice { background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 8px; padding: 12px 16px; margin: 0 0 16px; }
+.note { color: var(--muted); font-size: 15px; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin: 10px 0 0; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0 48px; color: var(--muted); font-size: 15px; }
+footer a { color: var(--accent); }
+@media (max-width: 520px) { nav a { margin-left: 10px; } .hero { padding-top: 32px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Plantilla APA 7</a>
+    <nav aria-label="Secciones">
+      <a href="#para-quien">¿Es para ti?</a>
+      <a href="#sistema">Tu sistema</a>
+      <a href="#prompts">Prompts</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Tu tesis en formato APA 7, sin pelear con Word</h1>
+    <p class="lead">Importa el documento que ya tienes en Word o Google Docs, o escribe en archivos de texto sencillos.
+      La plantilla genera el <strong>.docx</strong> con márgenes, sangrías, títulos, tablas, figuras, índices y
+      referencias numeradas automáticamente.</p>
+    <div class="btns">
+      <a class="btn" id="zip" href="https://github.com/jhoel0521/plantilla-docs-apa/archive/refs/heads/main.zip" rel="noopener">Descargar la plantilla (ZIP)</a>
+      <a class="btn sec" href="https://github.com/jhoel0521/plantilla-docs-apa" rel="noopener">Ver en GitHub</a>
+    </div>
+    <div class="chips" aria-label="Características">
+      <span class="chip">Gratis y de código abierto (MIT)</span>
+      <span class="chip">Windows · macOS · Linux</span>
+      <span class="chip">No modifica tu Word original</span>
+      <span class="chip">Tus datos no se suben</span>
+    </div>
+  </div>
+
+  <div id="movil" class="notice" hidden>
+    <strong>Estás en un celular o una tableta.</strong> Esta plantilla necesita una computadora con Windows,
+    macOS o Linux (iPhone y iPad no permiten instalar Python). Puedes leer esta página aquí y abrirla
+    después en tu computadora.
+  </div>
+
+  <section id="para-quien">
+    <h2>¿Es para ti?</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Estudiante que no programa</h3>
+        <p>Derecho, contabilidad, administración, educación… Ya tienes tu tesis avanzada en Word o Google Docs y
+          quieres el formato APA sin rehacerla.</p>
+        <p><a href="#sistema">Ver los 3 pasos</a> · <a href="#prompts">Usar un asistente de IA</a></p>
+      </div>
+      <div class="card">
+        <h3>Programador</h3>
+        <p>Necesitas la documentación de un proyecto (informe, tesis, entregas). Se clona en <code>docs/</code>
+          de tu repositorio y los capítulos viven en Markdown, con historial en git.</p>
+        <p><a href="#prompts">Prompt para integrarlo</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <h2>Cómo funciona</h2>
+    <ol class="steps">
+      <li><strong>Descarga y revisa tu computadora</strong>
+        Un comando comprueba Python y lo que falte, y lo instala por ti. Crea tu archivo <code>.env</code> para los datos de portada.</li>
+      <li><strong>Importa tu Word</strong>
+        Se guarda una copia de tu original (el tuyo no se toca) y se separa en un archivo por capítulo, con tus tablas, figuras, listas y referencias.</li>
+      <li><strong>Genera el documento</strong>
+        Sale <code>dist/Tesis.docx</code> en APA 7. Si cambias algo, lo regeneras en segundos. Si lo editas a mano en Word, la plantilla <em>no</em> lo sobrescribe.</li>
+    </ol>
+  </section>
+
+  <section id="sistema">
+    <h2>Los comandos en tu sistema</h2>
+    <p class="note" id="detectado"></p>
+    <div class="tabs" role="tablist" aria-label="Sistema operativo" id="tabs-os"></div>
+    <div id="panel-os"></div>
+    <p class="note">¿Prefieres no usar la terminal? Pega el <a href="#prompts">Prompt B</a> en tu asistente de IA y él hace estos pasos contigo.
+      Guía completa: <a href="https://github.com/jhoel0521/plantilla-docs-apa/blob/main/GUIA_ESTUDIANTES.md" rel="noopener">GUIA_ESTUDIANTES.md</a>.</p>
+  </section>
+
+  <section id="prompts">
+    <h2>Prompts para tu asistente de IA</h2>
+    <p>Cópialos en Claude, Codex, Gemini o el asistente que uses con acceso a tus archivos. Preguntan antes de instalar
+      o decidir algo, y no inventan tus datos.</p>
+    <div class="tabs" role="tablist" aria-label="Prompt">
+      <button class="tab" role="tab" id="tab-a" aria-selected="true" aria-controls="p-a" data-p="a">A · Proyecto de software</button>
+      <button class="tab" role="tab" id="tab-b" aria-selected="false" aria-controls="p-b" data-p="b">B · Estudiante que no programa</button>
+    </div>
+    <div id="p-a" class="panel" role="tabpanel" aria-labelledby="tab-a">
+      <p class="note">Ábrelo en la raíz de tu proyecto. Clona la plantilla en <code>docs/</code>, revisa si el proyecto usa git, instala y configura.</p>
+      <pre class="prompt"><code id="txt-a">Cargando…</code></pre>
+      <div class="row"><button class="btn" data-copy="txt-a">Copiar prompt A</button><span class="status" role="status" aria-live="polite"></span></div>
+    </div>
+    <div id="p-b" class="panel" role="tabpanel" aria-labelledby="tab-b" hidden>
+      <p class="note">Ábrelo en cualquier carpeta (por ejemplo, Documentos). No necesitas git. Importa tu Word y te va explicando cada paso.</p>
+      <pre class="prompt"><code id="txt-b">Cargando…</code></pre>
+      <div class="row"><button class="btn" data-copy="txt-b">Copiar prompt B</button><span class="status" role="status" aria-live="polite"></span></div>
+    </div>
+    <p class="note" id="fallback" hidden>No pude cargar los prompts desde esta página. Ábrelos en
+      <a href="https://github.com/jhoel0521/plantilla-docs-apa/blob/main/PROMPT_INICIAL.md" rel="noopener">PROMPT_INICIAL.md</a>.</p>
+  </section>
+
+  <section id="incluye">
+    <h2>Qué incluye</h2>
+    <div class="grid">
+      <div class="card"><h3>Formato APA 7 automático</h3><p>Times New Roman 12, doble espacio, márgenes de 2,54 cm, títulos en cinco niveles, sangría francesa en las referencias.</p></div>
+      <div class="card"><h3>Todo se numera solo</h3><p>Capítulos, tablas y figuras. «Como muestra la Tabla 3» se actualiza si mueves o agregas tablas. Índice y listas incluidos.</p></div>
+      <div class="card"><h3>Importa tu Word</h3><p>Reconoce títulos, listas, tablas, imágenes, «Fuente:» y leyendas, y marca con <code>[[revisar]]</code> lo que no pudo traer.</p></div>
+      <div class="card"><h3>Tus datos, a salvo</h3><p>Nombre, universidad y tutor viven solo en un <code>.env</code> que nunca se sube. Tampoco se suben tu Word original ni los documentos generados.</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Modifica mi Word original?</summary><p>No. Al importar guarda una copia en <code>original/</code> y trabaja sobre ella. Tu archivo queda intacto.</p></details>
+    <details><summary>¿Necesito saber programar o usar git?</summary><p>No. Git es opcional (sirve para guardar versiones). Necesitas Python, que el verificador te indica cómo instalar, y escribir tres comandos o pegar un prompt en tu asistente de IA.</p></details>
+    <details><summary>Mi facultad usa «Cuadro» y «Gráfico», no «Tabla» y «Figura».</summary><p>Se cambia en una línea de <code>documento.toml</code> (<code>etiqueta_tabla = "Cuadro"</code>). El importador te avisa si detecta que tu documento los usa.</p></details>
+    <details><summary>¿Funciona en iPhone o iPad?</summary><p>No: no permiten instalar Python. Usa una computadora con Windows, macOS o Linux.</p></details>
+    <details><summary>¿Por qué no hay un instalador con doble clic?</summary><p>Los archivos ejecutables o por lotes suelen ser marcados por los antivirus. Aquí todo es texto legible: puedes revisar cada línea antes de ejecutarla.</p></details>
+    <details><summary>Mi sistema dice «externally-managed-environment».</summary><p>Es normal en Debian, Ubuntu y Homebrew. El verificador crea una carpeta <code>.venv/</code> con lo necesario y los demás scripts la usan solos.</p></details>
+    <details><summary>¿Cómo actualizo el índice?</summary><p>En Word (Windows o Mac) responde «Sí» a «¿actualizar campos?». En LibreOffice: Herramientas → Actualizar → Todos los índices y tablas.</p></details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Licencia <a href="https://github.com/jhoel0521/plantilla-docs-apa/blob/main/LICENSE" rel="noopener">MIT</a>.
+      Código en <a href="https://github.com/jhoel0521/plantilla-docs-apa" rel="noopener">github.com/jhoel0521/plantilla-docs-apa</a>.</p>
+    <p>La estructura y los scripts se crearon con asistencia de Claude Code (Anthropic) y fueron revisados por el autor.
+      Esta página no usa cookies ni rastreadores.</p>
+  </div>
+</footer>
+
+<noscript>
+  <div class="wrap"><p class="notice">Activa JavaScript para ver los comandos según tu sistema y copiar los prompts, o lee
+    <a href="https://github.com/jhoel0521/plantilla-docs-apa/blob/main/PROMPT_INICIAL.md">PROMPT_INICIAL.md</a> y
+    <a href="https://github.com/jhoel0521/plantilla-docs-apa/blob/main/GUIA_ESTUDIANTES.md">GUIA_ESTUDIANTES.md</a> en GitHub.</p></div>
+</noscript>
+
+<script>
+(function () {
+  "use strict";
+  var RAW = "https://raw.githubusercontent.com/jhoel0521/plantilla-docs-apa/main/PROMPT_INICIAL.md";
+
+  // ---------- sistema operativo ----------
+  var OS = {
+    windows: {
+      nombre: "Windows",
+      instalar: "winget install Python.Python.3.13",
+      alt: "O descárgalo de python.org marcando «Add python.exe to PATH».",
+      terminal: "Abre la carpeta MiTesis, clic derecho en un espacio vacío → «Abrir en Terminal».",
+      py: "py -3",
+      ruta: "C:/Users/tu-usuario/Documents/Mi tesis.docx"
+    },
+    mac: {
+      nombre: "macOS",
+      instalar: "brew install python",
+      alt: "O descárgalo de python.org/downloads/macos. Si macOS ofrece instalar las «herramientas de línea de comandos», acepta.",
+      terminal: "Abre «Terminal», escribe cd (con un espacio) y arrastra la carpeta MiTesis a la ventana; pulsa Enter.",
+      py: "python3",
+      ruta: "/Users/tu-usuario/Documents/Mi tesis.docx"
+    },
+    linux: {
+      nombre: "Linux",
+      instalar: "sudo apt install python3 python3-venv python3-pip",
+      alt: "En Fedora: sudo dnf install python3.",
+      terminal: "Clic derecho en la carpeta MiTesis → «Abrir en terminal».",
+      py: "python3",
+      ruta: "/home/tu-usuario/Documentos/Mi tesis.docx"
+    }
+  };
+
+  function detectar() {
+    var ua = (navigator.userAgent || "").toLowerCase();
+    var plat = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "").toLowerCase();
+    var tactil = navigator.maxTouchPoints > 1;
+    var movil = /iphone|ipad|ipod|android/.test(ua) || (/mac/.test(plat) && tactil);
+    var sistema = "windows";
+    if (/win/.test(plat) || /windows/.test(ua)) sistema = "windows";
+    else if (/mac/.test(plat) || /mac os/.test(ua)) sistema = "mac";
+    else if (/linux|x11|cros/.test(plat + ua)) sistema = "linux";
+    return { sistema: sistema, movil: movil };
+  }
+
+  function el(tag, props, children) {
+    var e = document.createElement(tag);
+    Object.keys(props || {}).forEach(function (k) {
+      if (k === "text") e.textContent = props[k]; else e.setAttribute(k, props[k]);
+    });
+    (children || []).forEach(function (c) { e.appendChild(c); });
+    return e;
+  }
+
+  function codigo(texto) { return el("pre", {}, [el("code", { text: texto })]); }
+
+  function panelOS(clave) {
+    var o = OS[clave], cont = document.getElementById("panel-os");
+    cont.innerHTML = "";
+    cont.appendChild(el("p", {}, [el("strong", { text: "1. Instala Python " }), document.createTextNode("(gratis, versión 3.9 o superior):")]));
+    cont.appendChild(codigo(o.instalar));
+    cont.appendChild(el("p", { class: "note", text: o.alt }));
+    cont.appendChild(el("p", {}, [el("strong", { text: "2. Abre una terminal en la carpeta. " }), document.createTextNode(o.terminal)]));
+    cont.appendChild(el("p", {}, [el("strong", { text: "3. Ejecuta, uno por uno:" })]));
+    cont.appendChild(codigo(
+      o.py + " scripts/verificar_entorno.py --instalar\n" +
+      o.py + " scripts/importar_docx.py \"" + o.ruta + "\"\n" +
+      o.py + " scripts/generar_docx.py"));
+    cont.appendChild(el("p", { class: "note", text: "Truco: escribe el segundo comando hasta importar_docx.py y arrastra tu archivo .docx a la terminal; pega la ruta completa. Tu documento queda en dist/Tesis.docx." }));
+  }
+
+  function montarTabsOS(inicial) {
+    var cont = document.getElementById("tabs-os");
+    Object.keys(OS).forEach(function (k) {
+      var b = el("button", { class: "tab", role: "tab", "aria-selected": String(k === inicial), "data-os": k, text: OS[k].nombre });
+      b.addEventListener("click", function () { seleccionar(k); });
+      cont.appendChild(b);
+    });
+    panelOS(inicial);
+  }
+
+  function seleccionar(k) {
+    document.querySelectorAll("#tabs-os .tab").forEach(function (b) {
+      b.setAttribute("aria-selected", String(b.getAttribute("data-os") === k));
+    });
+    panelOS(k);
+  }
+
+  var d = detectar();
+  document.getElementById("detectado").textContent = d.movil
+    ? "Elige el sistema de tu computadora:"
+    : "Detecté " + OS[d.sistema].nombre + ". Si usas otro, elígelo aquí:";
+  montarTabsOS(d.sistema);
+  if (d.movil) document.getElementById("movil").hidden = false;
+
+  // ---------- prompts (una sola fuente: PROMPT_INICIAL.md del repositorio) ----------
+  document.querySelectorAll("[data-p]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      ["a", "b"].forEach(function (x) {
+        var activo = x === b.getAttribute("data-p");
+        document.getElementById("tab-" + x).setAttribute("aria-selected", String(activo));
+        document.getElementById("p-" + x).hidden = !activo;
+      });
+    });
+  });
+
+  fetch(RAW, { cache: "no-cache" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (md) {
+      var bloques = [], re = /```text\r?\n([\s\S]*?)\r?\n```/g, m;
+      while ((m = re.exec(md))) bloques.push(m[1]);
+      if (bloques.length < 2) throw new Error("formato");
+      document.getElementById("txt-a").textContent = bloques[0];
+      document.getElementById("txt-b").textContent = bloques[1];
+    })
+    .catch(function () {
+      document.getElementById("txt-a").textContent = "No se pudo cargar. Abre PROMPT_INICIAL.md en GitHub.";
+      document.getElementById("txt-b").textContent = "No se pudo cargar. Abre PROMPT_INICIAL.md en GitHub.";
+      document.getElementById("fallback").hidden = false;
+    });
+
+  // ---------- copiar ----------
+  function copiar(texto) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(texto);
+    return new Promise(function (ok, fail) {
+      var t = document.createElement("textarea");
+      t.value = texto; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { document.execCommand("copy") ? ok() : fail(); } catch (e) { fail(e); }
+      document.body.removeChild(t);
+    });
+  }
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var txt = document.getElementById(b.getAttribute("data-copy")).textContent;
+      var estado = b.parentNode.querySelector(".status");
+      copiar(txt).then(function () { estado.textContent = "Copiado ✓"; })
+        .catch(function () { estado.textContent = "No pude copiar: selecciona el texto y usa Ctrl/⌘ + C"; });
+      setTimeout(function () { estado.textContent = ""; }, 3500);
+    });
+  });
+})();
+</script>
+</body>
+</html>
